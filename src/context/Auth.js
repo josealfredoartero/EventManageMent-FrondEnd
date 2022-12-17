@@ -6,7 +6,7 @@ const AuthContext = createContext();
 
 const AuthProvider = ({children}) => {
     const navigate = useNavigate();
-    const [authenticated, setAuthenticated] = useState('');
+    const [user, setUser] = useState('');
     const [token, setToken] = useState(localStorage.getItem('token'));
 
     const getToken = () =>{
@@ -27,19 +27,18 @@ const AuthProvider = ({children}) => {
             // console.log(response.data)
             if(response.status === 200){
                 // console.log(response.data);
-                setAuthenticated(response.data);
+                setUser(response.data);
             }
         })
         .catch(error => {
             // console.log(error);
-            setAuthenticated('');
+            setUser('');
         })
     }
 
     const logout = async()=>{
         await axios.post('http://127.0.0.1:8000/api/logout',{},header)
         .then(response => {
-            // console.log(response);
             if(response.status === 200){
                 localStorage.removeItem('token')
                 navigate('/');
@@ -54,7 +53,7 @@ const AuthProvider = ({children}) => {
     },[token])
     
     
-    const data = {authenticated, setAuthenticated, token, setToken, getToken, logout, header};
+    const data = {user, setUser, token, setToken, getToken, logout, header};
     return (
         <AuthContext.Provider value={data} >{children}</AuthContext.Provider>
     )

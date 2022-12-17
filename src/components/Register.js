@@ -10,7 +10,7 @@ import {ContainerForm, Button} from '../elements/style';
 
 const Register = ({autenticacion}) => {
     const navigate = useNavigate();
-    const {authenticated} = useContext(AuthContext);
+    const {user} = useContext(AuthContext);
 
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
@@ -31,7 +31,7 @@ const Register = ({autenticacion}) => {
             navigate("/login");
         })
         .catch(error => {
-            console.log(error.response.data);
+            // console.log(error.response.data);
             setErrors(error.response.data.errors)
         })
     }
@@ -42,10 +42,10 @@ const Register = ({autenticacion}) => {
     }
 
     useEffect(() => {
-      if(authenticated !== ''){
+      if(user !== ''){
         navigate("/");
       }
-    }, [])
+    }, [user])
 
   return (
     <ContainerForm>
@@ -65,21 +65,3 @@ const Register = ({autenticacion}) => {
 }
 
 export default Register;
-
-// const Container = styled.div`
-//     width: 500px;
-//     min-height: 350px;
-//     max-height: 800px;
-//     text-align: center;
-//     margin: 8% auto;
-//     padding: 10px auto 30px;
-//     border: 2px solid black;
-//     box-shadow: 2px 10px 10px 1px rgba(0, 0, 0, 0.5);
-//     background: rgb(0, 80, 110);
-//     border-radius: 13px;
-
-//     .div{
-//         align-items: center;
-//         justify-content: center;
-//     }
-// `;

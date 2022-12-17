@@ -9,7 +9,7 @@ import {Profile,NameProfile,ImgProfile,DropdownContent,Logo} from "../elements/s
 import AuthContext from "../context/Auth";
 
 const Navbars = () => {
-  const { authenticated, logout} = useContext(AuthContext);
+  const { user, logout} = useContext(AuthContext);
 
   useEffect(() => {
     
@@ -31,7 +31,7 @@ const Navbars = () => {
             Publicaciones
           </Link>
           {
-            authenticated.id_role === 1 && 
+            user.id_role === 1 && 
               <NavDropdown title="Administrar" id="collasible-nav-dropdown" className="bg-dark text-light">
                 <Link className="btn" to="administrar/eventos">Eventos</Link>
                 <Link className="btn" to="administrar/publicaciones">
@@ -45,11 +45,10 @@ const Navbars = () => {
               </NavDropdown>
           }
         </Nav>
-      </Navbar.Collapse>
       {
-        authenticated? 
+        user? 
         <Profile>
-          <NameProfile>{authenticated.name}</NameProfile>
+          <NameProfile>{user.name}</NameProfile>
           <ImgProfile
             src="https://www.w3schools.com/howto/img_avatar.png"
             alt=""
@@ -68,6 +67,7 @@ const Navbars = () => {
           </Link>
         </Nav>
       }
+      </Navbar.Collapse>
     </Navbar>
   );
 };

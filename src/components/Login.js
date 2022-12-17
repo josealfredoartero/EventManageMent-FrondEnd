@@ -9,7 +9,7 @@ import {ContainerForm, Button} from '../elements/style';
 
 const Login = () => {
   const navigate = useNavigate();
-  const {getToken, authenticated} = useContext(AuthContext)
+  const {getToken, user} = useContext(AuthContext)
 
 const [email, setEmail] = useState('');
 const [password, setPassword] = useState('');
@@ -34,18 +34,26 @@ const login = async(e) => {
     })
     .catch(error => {
         e.target.disabled = false;
-        setErrors(error.response.data.errors);
+        console.log(error);
+        if(error.response.status === 422){
+          setErrors(error.response.data.errors);
+        }else if(error.response.status === 401){
+          setErrors(error.response.data)
+        }
     })
 }
 
 useEffect(() => {
-  if(authenticated !== ''){
+  if(user !== ''){
     navigate("/");
   }
 }, [])
   return (
     <ContainerForm>
         <h2 className='text-white'>Iniciar Secion</h2>
+        {errors.message && 
+        <p className='text-danger'>{errors.message}</p>
+        }
         <Input label='Correo' state={email} setState={setEmail} error={errors.email}/>
         <Input type='password' label='Contraseña' state={password} setState={setPassword} error={errors.password}/>
         <div>
