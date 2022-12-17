@@ -4,6 +4,7 @@ import AuthContext from '../context/Auth';
 import axios from 'axios';
 import DataTables from './DataTables';
 import {Containers} from '../elements/style';
+import * as Icon from 'react-bootstrap-icons';
 
 
 
@@ -122,11 +123,15 @@ const Index = () => {
         name: 'OPCIONES',
         button:true,
         grow:2,
-        cell: (row) => <button className='btn btn-warning' onClick={()=>addUser(row.id)} ></button>
+        cell: (row) => <button className='btn btn-success' onClick={()=>addUser(row.id)} ><Icon.EyeFill /></button>
       },
       {
         button:true,
-        cell: (row) => <button className='btn btn-danger' onClick={()=>addUser(row.id)} >Eliminar</button>
+        cell: (row) => <button className='btn btn-warning' onClick={()=>addUser(row.id)} ><Icon.PencilSquare /></button>
+      },
+      {
+        button:true,
+        cell: (row) =><button className='btn btn-danger' onClick={()=>addUser(row.id)} ><Icon.PencilSquare /></button>
       }
     ]
 
