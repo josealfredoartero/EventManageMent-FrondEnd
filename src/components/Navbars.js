@@ -33,8 +33,8 @@ const Navbars = () => {
           {
             user.id_role === 1 && 
               <NavDropdown title="Administrar" id="collasible-nav-dropdown" className="bg-dark text-light">
-                <Link className="btn" to="administrar/eventos">Eventos</Link>
-                <Link className="btn" to="administrar/publicaciones">
+                <Link className="btn" to="manage/events">Eventos</Link>
+                <Link className="btn" to="manage/publications">
                   Publicaciones
                 </Link>
                 {/* <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>

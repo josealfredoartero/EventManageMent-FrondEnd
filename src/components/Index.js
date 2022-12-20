@@ -147,7 +147,7 @@ const Index = () => {
       
   return (
     <Containers>
-      <div className='mt-3'>
+      <div className=''>
         <DataTables title='Usuarios' columns={columns} data={Datos} />
       </div>
     </Containers>

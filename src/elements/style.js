@@ -1,6 +1,4 @@
-import styled from "styled-components";
-
-import NavDropdown from "react-bootstrap/NavDropdown";
+import styled,{css} from "styled-components";
 
 const Container = styled.div`
     width: 90%;
@@ -138,13 +136,101 @@ const Logo = styled.img`
 `;
 
 const Containers = styled.div`
-    margin-top: 70px;
+    margin-top: 75px;
 
 `;
 
-const Dropdown2 = styled(NavDropdown)`
-  color: red;
+const File = styled.input`
+    color: transparent;
+
+    &::-webkit-file-upload-button {
+        visibility: hidden;
+      }
+
+    &:before{
+        content: 'Seleccionar Imagen';
+        color: black;
+        display: inline-block;
+        background: -webkit-linear-gradient(top, #f9f9f9, #e3e3e3);
+        border: 1px solid #999;
+        border-radius: 3px;
+        padding: 10px 15px;
+        outline: none;
+        white-space: nowrap;
+        -webkit-user-select: none;
+        cursor: pointer;
+        text-shadow: 1px 1px #fff;
+        font-weight: 700;
+        font-size: 10pt;
+    }
+
+    &:hover::before {
+        border-color: black;
+    }
+    &:active {
+        outline: 0;
+    }
+
+    &:active::before {
+        background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9); 
+    }
 `;
+
+const Modal = styled.div`
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left:0;
+    background: rgba(0,0,0, .8);
+    padding: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+`;
+
+const ContainerModal = styled.div`
+    width: 800px;
+    min-height: 500px;
+    position: relative;
+    ${(props) => {
+        switch (props.bg) {
+            case "dark":
+              return css`
+                background-color: black;
+                color: white;
+                opacity: .9;
+              `;
+            default:
+              return css`
+                background: white;
+                color: black;
+              `;
+          }
+    }};
+    border-radius: 12px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 8px;
+    padding: 20px;
+`;
+
+const InputTextArea = styled.textarea`
+    width: 100%;
+    background: #fff;
+    borde-radius: 3px;
+    height: 150px;
+    line-height: 30px;
+    padding: 0 20px 0px 5px;
+    transition .3s ease all;
+    border: 1px solid black;
+
+    &:focus{
+        border: 3px solid blue;
+        outline: none;
+        box-shadow: 3px 0px 3px rgba(163,163,163, 0.4);
+    }
+`;
+
+
 
 export {
     Container,
@@ -159,5 +245,8 @@ export {
     DropdownContent,
     Logo,
     Containers,
-    Dropdown2
+    File,
+    Modal,
+    ContainerModal,
+    InputTextArea
 }

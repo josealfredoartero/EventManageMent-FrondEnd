@@ -1,7 +1,7 @@
 import React, {useState, useEffect, useContext} from 'react';
 import styled from 'styled-components';
 import Input from './Input';
-import {useNavigate} from 'react-router-dom'
+import {useNavigate} from 'react-router-dom';
 import axios from 'axios';
 import AuthContext from '../context/Auth';
 import {ContainerForm, Button} from '../elements/style';
@@ -20,6 +20,7 @@ const Register = ({autenticacion}) => {
 
     const sendRegister = async(e) => {
         e.preventDefault();
+        e.target.disabled = true;
         await axios.post("http://127.0.0.1:8000/api/register",{
             name:name,
             email:email,
@@ -28,9 +29,11 @@ const Register = ({autenticacion}) => {
         })
         .then(response => {
             // console.log(response);
+            e.target.disabled = false;
             navigate("/login");
         })
         .catch(error => {
+            e.target.disabled = false;
             // console.log(error.response.data);
             setErrors(error.response.data.errors)
         })

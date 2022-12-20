@@ -47,7 +47,7 @@ useEffect(() => {
   if(user !== ''){
     navigate("/");
   }
-}, [])
+}, [user])
   return (
     <ContainerForm>
         <h2 className='text-white'>Iniciar Secion</h2>

@@ -1,5 +1,5 @@
 import React,{useState, useEffect} from 'react';
-import DataTable,{createTheme} from 'react-data-table-component';
+import DataTable,{createTheme, defaultThemes} from 'react-data-table-component';
 
 
 const DataTables = ({data, columns, title}) => {
@@ -9,18 +9,18 @@ const DataTables = ({data, columns, title}) => {
 
     const PaginateOptions = {
         rowsPerPageText: 'Filas Por Página',
-        rageSeparatorText:'de',
-        SelectAllRowsItem:true,
-        SelectAllRowsItemText:'Todos'
+        rangeSeparatorText: 'de',
+        SelectAllRowsItem: true,
+        SelectAllRowsItemText: 'Todos'
     }
 
     createTheme('dark', {
         text: {
-          primary: 'White',
-          secondary: 'green',
+          primary: 'black',
+          secondary: 'rgba(0, 59, 255, 0.7)',
         },
         background: {
-          default: 'black',
+          default: 'rgb(240, 240, 240)',
         },
         context: {
           background: '#cb4b16',
@@ -36,29 +36,82 @@ const DataTables = ({data, columns, title}) => {
         },
     }, 'dark');
 
+  //   const customStyles = {
+  //     rows: {
+  //         style: {
+  //             minHeight: '72px', // override the row height
+  //         },
+  //     },
+  //     headCells: {
+  //         style: {
+  //             maxWidth: '',
+  //             paddingLeft: '8px', // override the cell padding for head cells
+  //             paddingRight: '8px',
+  //         },
+  //     },
+  //     cells: {
+  //         style: {
+  //             maxWidth: '1000px',
+  //             paddingLeft: '8px', // override the cell padding for data cells
+  //             paddingRight: '8px',
+  //             backgroundColor: "red",
+  //         },
+  //     },
+  // };
+
+  const customStyles = {
+    	header: {
+    		style: {
+    			minHeight: '72px',
+    		},
+    	},
+    	headRow: {
+    		style: {
+    			borderTopStyle: 'solid',
+    			borderTopWidth: '1px',
+    			borderTopColor: defaultThemes.default.divider.default,
+    		},
+    	},
+    	headCells: {
+    		style: {
+    			'&:not(:last-of-type)': {
+    				borderRightStyle: 'solid',
+    				borderRightWidth: '1px',
+    				borderRightColor: defaultThemes.default.divider.default,
+    			},
+    		},
+    	},
+    	cells: {
+    		style: {
+    			'&:not(:last-of-type)': {
+    				borderRightStyle: 'solid',
+    				borderRightWidth: '1px',
+    				borderRightColor: defaultThemes.default.divider.default,
+    			},
+    		},
+    	},
+    };
+
 
     useEffect(() => {
         const timeout = setTimeout(() => {
           setRows(data);
           setPending(false);
-        }, 500);
+        }, 1000);
         return () => clearTimeout(timeout);
     }, [data]);
 
   return (
     <div className='container'>
-        <h1 className='text-center'>Lista De {title}</h1>
-        <button className='btn btn-success'>Agregar {title}</button>
-        <div className='container table-responsive mt-2 '>
+        <div className='table-responsive mt-2 '>
             <DataTable 
               columns={columns}
               data={rows}
               pagination
-              fixedHeader
               progressPending={pending}
-              responsive
-              pointerOnHover
               theme='dark'
+              responsive
+              customStyles={customStyles}
               paginationComponentOptions={PaginateOptions}
             />
         </div>
