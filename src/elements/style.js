@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled,{css} from "styled-components";
 
 const Container = styled.div`
@@ -136,8 +137,7 @@ const Logo = styled.img`
 `;
 
 const Containers = styled.div`
-    margin-top: 75px;
-
+    margin-top: 15px;
 `;
 
 const File = styled.input`
@@ -191,6 +191,7 @@ const Modal = styled.div`
 
 const ContainerModal = styled.div`
     width: 800px;
+    margin-top: 10px;
     min-height: 500px;
     position: relative;
     ${(props) => {
@@ -230,6 +231,81 @@ const InputTextArea = styled.textarea`
     }
 `;
 
+const FooterPag = styled.footer`
+    // position: fixed;
+    margin-top: auto;
+    margin-bottom: 10px;
+    // color: black;
+    // text-align: center;
+    // position: fixed;
+    display: block;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: black;
+    text-align: center;
+`;
+
+const ConImg = styled.div`
+    display: grid;
+    row-gap: 10px;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    align-item: center;
+    justify-content: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-left: 50px;
+
+    div{
+        position:relative;
+    }
+
+`;
+
+const Btnclose = styled.a`
+    position:absolute;
+    text-decoration: none;
+    right: 20px;
+    cursor: pointer;
+    bottom: 20px;
+    
+
+    &:hover{
+        color: red;
+        border-bottom-color: red;
+        border-bottom-style: solid;
+        border-bottom-width: 1px;
+    }
+`;
+const BtnLink = styled(Link)`
+    position:absolute;
+    text-decoration: none;
+    right: 20px;
+    cursor: pointer;
+    bottom: 20px;
+    
+
+    &:hover{
+        color: blue;
+        border-bottom-color: blue;
+        border-bottom-style: solid;
+        border-bottom-width: 1px;
+    }
+`;
+
+const ContentCenter = styled.div`
+    width: 50%;
+    margin: 0px auto;
+    align-items: center;
+    justify-content: center;
+`;
+
+const Option = styled.div`
+    position: absolute;
+    // display:block;
+    right: 10px;
+    top: 0px;
+`;
 
 
 export {
@@ -248,5 +324,11 @@ export {
     File,
     Modal,
     ContainerModal,
-    InputTextArea
+    InputTextArea,
+    FooterPag,
+    ConImg,
+    Btnclose,
+    BtnLink,
+    ContentCenter,
+    Option
 }

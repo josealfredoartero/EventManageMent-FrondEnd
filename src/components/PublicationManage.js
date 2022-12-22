@@ -6,7 +6,6 @@ import * as Icon from 'react-bootstrap-icons';
 import AuthContext from '../context/Auth';
 import {useNavigate} from 'react-router-dom';
 import ModalCreatePublication from './ModalCreatePublication';
-import { Table } from 'react-bootstrap';
 import ModalEditPublication from './ModalEditPublication';
 import SeePublication from './SeePublication';
 
@@ -19,7 +18,7 @@ const PublicationManage = () => {
 
     const [id, setId] = useState('')
 
-    const {user} = useContext(AuthContext);
+    const {user, header} = useContext(AuthContext);
     const navigate = useNavigate();
 
     const AppUrl = "http://127.0.0.1:8000";
@@ -54,22 +53,38 @@ const PublicationManage = () => {
         },
         {
             name:"Imagenes",
-            // selector:row => row.images[0].url
             selector: row => <img src={`${AppUrl}${row.images[0].url}`} style={{width:"100px"}} alt='' />,
             width:"200px"
         },
         {
             name: "Opciones",
-            cell: (row) => <><button onClick={()=>IdPublication(row.id)} title='Ver' className='btn btn-success' ><Icon.EyeFill /></button> |
-                        <button onClick={()=>setEditPublication(true)} title='Editar' className='btn btn-warning'  ><Icon.PencilSquare /></button> |
-                        <button title='Eliminar' className='btn btn-danger'  ><Icon.Trash /></button>
+            cell: (row) => <><button onClick={()=>IdPublication(row.id,'see')} title='Ver' className='btn btn-success' ><Icon.EyeFill /></button> |
+                        <button onClick={()=>IdPublication(row.id,'edit')} title='Editar' className='btn btn-warning'  ><Icon.PencilSquare /></button> |
+                        <button onClick={()=>deletePublication(row.id)} title='Eliminar' className='btn btn-danger'  ><Icon.Trash /></button>
                         </> 
         }
     ];
 
-    const IdPublication = (id) => {
+    const IdPublication = (id, option) => {
         setId(id);
-        setSeePublication(true);
+        if(option === 'see'){
+            setSeePublication(true);
+        }else if(option === 'edit'){
+            setEditPublication(true)
+        }
+    }
+
+    const deletePublication = async(id) => {
+        await axios.delete(`http://127.0.0.1:8000/api/publication/${id}`,header)
+        .then(response =>{
+            console.log(response);
+            if(response.status === 200){
+                getPublications();
+            }
+        })
+        .catch(error => {
+            console.log(error);
+        })
     }
 
     useEffect(() => {
@@ -86,36 +101,8 @@ const PublicationManage = () => {
         <DataTables title='Publicaciones' columns={columns} data={publications}/>
 
         <SeePublication state={seePublication} setState={setSeePublication} id={id}/>
-        <ModalEditPublication state={editPublication}/>
-        <ModalCreatePublication state={createPublication} setState={setCreatePublication} />
-        {/* <Table>
-            <thead>
-                <tr>
-                    <th>Titulo</th>
-                    <th>Descripcion</th>
-                    <th>Usuario</th>
-                    <th>Imagenes</th>
-                    <th>Opciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                {
-                    publications.map(element => (
-                        <tr>
-                            <td>{element.title}</td>
-                            <td style={{width:"500px"}}>{element.description.substr(0,250)}{element.description.length > 250 && "..."}</td>
-                            <td>{element.name}</td>
-                            <td><img src={`${AppUrl}${element.images[0].url}`} alt="" style={{width:"100px"}}/> </td>
-                            <td>
-                                <button title='Ver' className='btn btn-success' ><Icon.EyeFill /></button>|
-                                <button title='Editar' className='btn btn-warning' ><Icon.PencilSquare /></button>|
-                                <button title='Eliminar' className='btn btn-danger' ><Icon.PencilSquare /></button>
-                            </td>
-                        </tr>
-                    ))
-                }
-            </tbody>
-        </Table> */}
+        <ModalCreatePublication state={createPublication} setState={setCreatePublication} refreshData={getPublications} />
+        <ModalEditPublication state={editPublication} setState={setEditPublication} id={id} refresh={getPublications}/>
     </Containers>
   )
 }

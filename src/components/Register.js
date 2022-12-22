@@ -7,7 +7,6 @@ import AuthContext from '../context/Auth';
 import {ContainerForm, Button} from '../elements/style';
 
 
-
 const Register = ({autenticacion}) => {
     const navigate = useNavigate();
     const {user} = useContext(AuthContext);

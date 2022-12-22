@@ -31,9 +31,6 @@ const InputFile = ({images, setImages, multiple=null}) => {
   return (
     <Container>
       <File type="file" onChange={handlerImages} multiple={multiple} accept="image/png,image/jpeg"/>
-      {
-        console.log(images)
-      }
     </Container>
 
   );

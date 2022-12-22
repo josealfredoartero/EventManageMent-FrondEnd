@@ -16,7 +16,7 @@ const Navbars = () => {
   }, [])
   
   return (
-    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" fixed="top" className="mb-1">
+    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" className="mb-1">
       {/* <Link to='/' className="btn btn-dark bg-dark">EventManageMent</Link> */}
       <Link to='/'>
         <Logo src='/img/logo1.png' alt='logo'/>
@@ -24,10 +24,10 @@ const Navbars = () => {
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-end">
         <Nav>
-          <Link className="btn btn-dark bg-dark" to="/eventos">
+          <Link className="btn btn-dark bg-dark" to="/events">
             Eventos
           </Link>
-          <Link className="btn btn-dark bg-dark" to="/publicaciones">
+          <Link className="btn btn-dark bg-dark" to="/publications">
             Publicaciones
           </Link>
           {

@@ -1,9 +1,9 @@
 import axios from 'axios';
 import React,{useState, useEffect} from 'react';
-import { Modal,ContainerModal } from '../elements/style';
+import { Modal,ContainerModal, Btnclose } from '../elements/style';
 import { UrlApi, api } from '../hooks/encodeBase64';
 
-const SeePublication = ({state, setState, id=null}) => {
+const SeePublication = ({state, setState, id}) => {
 
     const [publication, setPublication] = useState([]);
     const [image, setImage] = useState('#')
@@ -22,7 +22,7 @@ const SeePublication = ({state, setState, id=null}) => {
 
     useEffect(() => {
         getPublication();
-    }, [id])
+    }, [state])
     
 
 
@@ -31,21 +31,21 @@ const SeePublication = ({state, setState, id=null}) => {
         {
             state &&
             <Modal>
-                <ContainerModal>
-                    <img style={{maxWidth:"80%", margin:"0px 10%"}} src={`${api}${image}`}  alt=''/>
+                <ContainerModal >
+                    <h1 className='text-center'>{publication.title}</h1>
+                    <img style={{display:"flex" ,maxWidth:"80%", maxHeight:"300px", margin:"0 auto"}} src={`${api}${image}`}  alt=''/>
     
                     <div className='container text-center mt-3'>
                         {
                             publication.images && 
                             publication.images.map(item => (
-                                <button onClick={()=>setImage(item.url)}><img style={{height:"80px"}} src={`${api}${item.url}`} alt='' /></button>
+                                <img key={item.id} onClick={()=>setImage(item.url)} style={{height:"70px", marginRight:"10px"}} src={`${api}${item.url}`} alt='' />
                             ))
                         }
                     </div>
 
-                    <h1 className='text-center'>{publication.title}</h1>
                     <p className='text-justify'>{publication.description}</p>
-                    <button onClick={()=>setState(false)}>cerrar</button>
+                    <Btnclose onClick={()=>setState(false)}>cerrar</Btnclose>
                 </ContainerModal>
             </Modal>
         }

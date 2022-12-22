@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import {useState, useContext, useEffect} from 'react';
 import Input from './Input';
-import {useNavigate} from 'react-router-dom';
+import {useNavigate, Link} from 'react-router-dom';
 import AuthContext from '../context/Auth';
 import {ContainerForm, Button} from '../elements/style';
 
