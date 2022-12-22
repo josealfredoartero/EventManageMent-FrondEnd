@@ -6,6 +6,7 @@ import InputFile from './InputFile';
 import Textarea from './Textarea';
 import * as Icon from 'react-bootstrap-icons';
 import AuthContext from '../context/Auth';
+import {  toast } from 'react-toastify';
 
 const ModalEditPublication = ({state, setState, id, refresh}) => {
     const {header} = useContext(AuthContext);
@@ -75,11 +76,19 @@ const ModalEditPublication = ({state, setState, id, refresh}) => {
         .then(response => {
             console.log(response);
             if(response.status === 200){
+                toast.success(response.data.message, {
+                    position: toast.POSITION.TOP_RIGHT
+                  });
                 refresh();
                 setState(false)
             }
         })
-        .catch(error => console.log(error))
+        .catch(error => {
+            console.log(error)
+            toast.error("Error !!!", {
+                position: toast.POSITION.TOP_RIGHT
+              });
+        })
 
     }
 

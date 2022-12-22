@@ -32,7 +32,7 @@ const SeePublication = ({state, setState, id}) => {
             state &&
             <Modal>
                 <ContainerModal >
-                    <h1 className='text-center'>{publication.title}</h1>
+                    <h3 className='text-center'>{publication.title}</h3>
                     <img style={{display:"flex" ,maxWidth:"80%", maxHeight:"300px", margin:"0 auto"}} src={`${api}${image}`}  alt=''/>
     
                     <div className='container text-center mt-3'>

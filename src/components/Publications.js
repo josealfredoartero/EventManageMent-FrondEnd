@@ -1,7 +1,6 @@
 import axios from 'axios'
 import React, {useEffect, useState} from 'react'
 import CardPublication from './CardPublication';
-import Carousel from 'react-bootstrap/Carousel';
 import { ContentCenter } from '../elements/style';
 
 

@@ -6,11 +6,13 @@ import Register from './components/Register';
 import Login from './components/Login';
 import Navbars from './components/Navbars';
 import PublicationManage from './components/PublicationManage';
-import ModalEditPublication from './components/ModalEditPublication';
 import Publications from './components/Publications';
 import Home from './components/Home';
 import Footer from './components/Footer';
 import Publication from './components/Publication';
+import EventManage from './components/EventManage';
+import Events from './components/Events';
+import Event from './components/Event';
 
 function App() {
   return (
@@ -23,8 +25,10 @@ function App() {
           <Route path='/login' element={<Login />} />
           <Route path='/publications' element={<Publications />} />
           <Route path='/publication/:id' element={<Publication />} />
+          <Route path='/events' element={<Events />} />
+          <Route path='/event/:id' element={<Event />} />
           <Route path='/manage/publications' element={<PublicationManage />} />
-          <Route path='/manage/events' element={<ModalEditPublication />} />
+          <Route path='/manage/events' element={<EventManage />} />
         </Routes>
         <Footer />
       </AuthProvider>

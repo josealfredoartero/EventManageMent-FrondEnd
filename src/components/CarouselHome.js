@@ -1,10 +1,12 @@
 import React from 'react';
 import Carousel from 'react-bootstrap/Carousel';
+import { useNavigate } from 'react-router-dom';
 
-const CarouselHome = ({array}) => {
-    console.log(array)
+const CarouselHome = ({array, type}) => {
+    const navigate = useNavigate();
+    // console.log(array)
   return (
-    <Carousel>
+    <Carousel variant="dark">
         {
             array.map(item => (
                 <Carousel.Item>
@@ -22,7 +24,14 @@ const CarouselHome = ({array}) => {
                         />
                     }
                 <Carousel.Caption>
-                    <h3 className='text-dark'>{item.title}</h3>
+                    {
+                        type === 'event' &&
+                        <h3 onClick={()=>navigate(`/event/${item.id}`)} className=''>{item.title}</h3>
+                    }
+                    {
+                        type === 'publication' &&
+                        <h3 onClick={()=>navigate(`/publication/${item.id}`)} className=''>{item.title}</h3>
+                    }
                 </Carousel.Caption>
                 </Carousel.Item>
             ))

@@ -1,8 +1,8 @@
 import React from 'react';
-import { Container, InputTextArea } from '../elements/style';
+import { Container, Errors, InputTextArea } from '../elements/style';
 
 
-const Textarea = ({label, state, setState, value=''}) => {
+const Textarea = ({label, state, setState, error}) => {
 
     const handleChange = (e)=>{
         setState(e.target.value);
@@ -12,6 +12,7 @@ const Textarea = ({label, state, setState, value=''}) => {
     <Container>
         <label htmlFor={label}>{label}:</label>
         <InputTextArea id={label} value={state} onChange={handleChange} />
+        {error && <Errors>*{error}</Errors>}
     </Container>
   )
 }

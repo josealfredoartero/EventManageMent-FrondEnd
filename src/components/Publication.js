@@ -35,6 +35,7 @@ const Publication = () => {
 
     const sendComment = async(e) =>{
       e.preventDefault();
+      setComment("");
       if(user.id){
         await axios.post(`http://127.0.0.1:8000/api/publication/comment`,{
           description:comment,
@@ -42,7 +43,6 @@ const Publication = () => {
         },header)
         .then(response => {
           getComments();
-          setComment('');
         })
         .catch(error => console.log(error))
       }
@@ -66,7 +66,7 @@ const Publication = () => {
             {
               user.id &&
               <div className='mt-2 mb-2'>
-                <input onChange={(e)=>setComment(e.target.value)} placeholder='Agregar Comentario...' />
+                <input value={comment} onChange={(e)=>setComment(e.target.value)} placeholder='Agregar Comentario...' />
                 <button onClick={sendComment}>Comentar</button>
               </div>
             }

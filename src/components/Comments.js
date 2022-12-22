@@ -68,15 +68,15 @@ const Comments = ({comment, refresh}) => {
       </Card.Header>
         {
             editComment?
-        <div>
+        <Card.Body>
             <input value={description} onChange={(e)=>setDescription(e.target.value)} />
             <button onClick={updateComment}>Modificar</button>
             <button onClick={()=>setEditComment(false)}>cancelar</button>
-        </div>:
+        </Card.Body>:
       <Card.Body>
         <Card.Title>{comment.description}</Card.Title>
         <Card.Text>
-            {comment.created_at.slice(0,10)}
+            {comment.created_at.slice(11,19)} {comment.created_at.slice(0,10)} 
         </Card.Text>
       </Card.Body>
       

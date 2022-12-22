@@ -249,7 +249,7 @@ const FooterPag = styled.footer`
 const ConImg = styled.div`
     display: grid;
     row-gap: 10px;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     align-item: center;
     justify-content: center;
     margin-top: 15px;

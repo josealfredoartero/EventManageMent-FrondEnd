@@ -8,6 +8,8 @@ import {useNavigate} from 'react-router-dom';
 import ModalCreatePublication from './ModalCreatePublication';
 import ModalEditPublication from './ModalEditPublication';
 import SeePublication from './SeePublication';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const PublicationManage = () => {
 
@@ -79,6 +81,9 @@ const PublicationManage = () => {
         .then(response =>{
             console.log(response);
             if(response.status === 200){
+                toast.success(response.data.message, {
+                    position: toast.POSITION.TOP_RIGHT
+                  });
                 getPublications();
             }
         })
@@ -96,6 +101,7 @@ const PublicationManage = () => {
 
   return (
     <Containers className='container'>
+          <ToastContainer />
         <h1 className='text-center'>Lista de Publicaciones</h1>
         <button onClick={() => setCreatePublication(true)} className='btn btn-success'>Agregar Nueva Publicaion</button>
         <DataTables title='Publicaciones' columns={columns} data={publications}/>

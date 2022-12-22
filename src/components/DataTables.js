@@ -22,6 +22,9 @@ const DataTables = ({data, columns, title}) => {
         background: {
           default: 'rgb(240, 240, 240)',
         },
+        header:{
+          background: 'black'
+        },
         context: {
           background: '#cb4b16',
           text: '#FFFFFF',
@@ -59,38 +62,62 @@ const DataTables = ({data, columns, title}) => {
   //     },
   // };
 
+  // const customStyles = {
+  //   	header: {
+  //   		style: {
+  //   			minHeight: '72px',
+  //   		},
+  //   	},
+  //   	headRow: {
+  //   		style: {
+  //   			borderTopStyle: 'solid',
+  //   			borderTopWidth: '1px',
+  //   			borderTopColor: defaultThemes.default.divider.default,
+  //   		},
+  //   	},
+  //   	headCells: {
+  //   		style: {
+  //   			'&:not(:last-of-type)': {
+  //   				borderRightStyle: 'solid',
+  //   				borderRightWidth: '1px',
+  //   				borderRightColor: defaultThemes.default.divider.default,
+  //   			},
+  //   		},
+  //   	},
+  //   	cells: {
+  //   		style: {
+  //   			'&:not(:last-of-type)': {
+  //   				borderRightStyle: 'solid',
+  //   				borderRightWidth: '1px',
+  //   				borderRightColor: defaultThemes.default.divider.default,
+  //   			},
+  //   		},
+  //   	},
+  //   };
+
   const customStyles = {
-    	header: {
-    		style: {
-    			minHeight: '72px',
-    		},
-    	},
-    	headRow: {
-    		style: {
-    			borderTopStyle: 'solid',
-    			borderTopWidth: '1px',
-    			borderTopColor: defaultThemes.default.divider.default,
-    		},
-    	},
-    	headCells: {
-    		style: {
-    			'&:not(:last-of-type)': {
-    				borderRightStyle: 'solid',
-    				borderRightWidth: '1px',
-    				borderRightColor: defaultThemes.default.divider.default,
-    			},
-    		},
-    	},
-    	cells: {
-    		style: {
-    			'&:not(:last-of-type)': {
-    				borderRightStyle: 'solid',
-    				borderRightWidth: '1px',
-    				borderRightColor: defaultThemes.default.divider.default,
-    			},
-    		},
-    	},
-    };
+    rows: {
+        style: {
+            minHeight: '72px', // override the row height
+        },
+    },
+    headCells: {
+        style: {
+            background: 'black',
+            color: 'white',
+            opacity: '.8',
+            fontWeight: 'bold',
+            paddingLeft: '8px', // override the cell padding for head cells
+            paddingRight: '8px',
+        },
+    },
+    cells: {
+        style: {
+            paddingLeft: '8px', // override the cell padding for data cells
+            paddingRight: '8px',
+        },
+    },
+};
 
 
     useEffect(() => {
@@ -109,7 +136,7 @@ const DataTables = ({data, columns, title}) => {
               data={rows}
               pagination
               progressPending={pending}
-              theme='dark'
+              // theme='dark'
               responsive
               customStyles={customStyles}
               paginationComponentOptions={PaginateOptions}

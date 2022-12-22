@@ -26,7 +26,11 @@ const CardPublication = ({publication, button=true}) => {
             fecha: {publication.created_at.slice(0,10)}
         </Card.Text>
         <Card.Text>
-          {publication.description}
+          {
+            publication.description.length > 250 && button ?
+            `${publication.description.slice(0,250)}...`:
+            publication.description
+          }
         </Card.Text>
         {
             button &&

@@ -6,13 +6,17 @@ import Textarea from './Textarea';
 import * as Icon from 'react-bootstrap-icons';
 import axios from 'axios';
 import AuthContext from '../context/Auth';
+import {  toast } from 'react-toastify';
 
 const ModalCreatePublication = ({state, setState, refreshData}) => {
 
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [images, setImages] = useState([]);
+    const [errors, setErrors] = useState([]);
+
     const {header} = useContext(AuthContext);
+
 
 
     const deleteImg = (image) =>{
@@ -33,6 +37,7 @@ const ModalCreatePublication = ({state, setState, refreshData}) => {
         setTitle('');
         setDescription('');
         setImages([]);
+        setErrors([])
       }
 
       const savePublication = async(e) =>{
@@ -45,11 +50,22 @@ const ModalCreatePublication = ({state, setState, refreshData}) => {
         .then(response => {
             console.log(response)
             if(response.status === 200){
+                toast.success(response.data.message, {
+                    position: toast.POSITION.TOP_RIGHT
+                  });
                 refreshData();
                 setState(false);
             }
         })
-        .catch(error => console.log(error))
+        .catch(error => {
+            console.log(error)
+            if(error.response.status === 422){
+                setErrors(error.response.data.errors);
+            }
+            toast.error("Error !!!", {
+                position: toast.POSITION.TOP_RIGHT
+              });
+        })
       }
 
       useEffect(() => {
@@ -63,9 +79,9 @@ const ModalCreatePublication = ({state, setState, refreshData}) => {
                 <ContainerModal bg="dark" >
                     <h1 className='text-center'>Crear Publicacion</h1>
                     <form>
-                        <Input label="Titulo" state={title} setState={setTitle} />
-                        <Textarea state={description} setState={setDescription} label="Descripcion" />
-                        <InputFile images={images} setImages={setImages}  multiple={true} />
+                        <Input error={errors.title} label="Titulo" state={title} setState={setTitle} />
+                        <Textarea error={errors.description} state={description} setState={setDescription} label="Descripcion" />
+                        <InputFile error={errors.image} images={images} setImages={setImages}  multiple={true} />
                         <ConImg>
                             {
                                 images.map(item => (

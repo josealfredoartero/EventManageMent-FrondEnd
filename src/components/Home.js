@@ -39,15 +39,15 @@ const Home = () => {
             </p>
         </div>
         <div>
-            <h2>Eventos</h2>
+            <h2 className='text-center'>Eventos</h2>
             <ContentCenter>
-                <CarouselHome array={events} />
+                <CarouselHome array={events} type="event" />
             </ContentCenter>
         </div>
         <div className='mt-5'>
-            <h2>Publicaciones</h2>
+            <h2 className='text-center'>Publicaciones</h2>
             <ContentCenter>
-                <CarouselHome array={publications} />
+                <CarouselHome array={publications} type="publication" />
             </ContentCenter>
         </div>
     </div>

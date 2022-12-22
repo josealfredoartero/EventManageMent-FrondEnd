@@ -27,12 +27,14 @@ const AuthProvider = ({children}) => {
             // console.log(response.data)
             if(response.status === 200){
                 // console.log(response.data);
+                localStorage.setItem('user', response.data)
                 setUser(response.data);
             }
         })
         .catch(error => {
             // console.log(error);
             setUser('');
+            localStorage.removeItem('user')
         })
     }
 
@@ -41,6 +43,7 @@ const AuthProvider = ({children}) => {
         .then(response => {
             if(response.status === 200){
                 localStorage.removeItem('token')
+                localStorage.removeItem('user')
                 navigate('/');
                 getToken();
             }
@@ -49,6 +52,9 @@ const AuthProvider = ({children}) => {
     }
     
     useEffect(() => {
+        if(localStorage.getItem('user')){
+            setUser(localStorage.getItem('user'))
+        }
         authorization();
     },[token])
     
