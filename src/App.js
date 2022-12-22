@@ -7,6 +7,7 @@ import Navbars from './components/Navbars';
 import Index from './components/Index';
 import PublicationManage from './components/PublicationManage';
 import ModalEditPublication from './components/ModalEditPublication';
+import EventManage from './components/EventManage';
 
 function App() {
   return (
@@ -18,7 +19,7 @@ function App() {
           <Route path='/register' element={<Register />} />
           <Route path='/login' element={<Login />} />
           <Route path='/manage/publications' element={<PublicationManage />} />
-          <Route path='/manage/events' element={<ModalEditPublication />} />
+          <Route path='/manage/events' element={<EventManage />} />
         </Routes>
       </AuthProvider>
     </Routers>
