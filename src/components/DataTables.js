@@ -39,61 +39,6 @@ const DataTables = ({data, columns, title}) => {
         },
     }, 'dark');
 
-  //   const customStyles = {
-  //     rows: {
-  //         style: {
-  //             minHeight: '72px', // override the row height
-  //         },
-  //     },
-  //     headCells: {
-  //         style: {
-  //             maxWidth: '',
-  //             paddingLeft: '8px', // override the cell padding for head cells
-  //             paddingRight: '8px',
-  //         },
-  //     },
-  //     cells: {
-  //         style: {
-  //             maxWidth: '1000px',
-  //             paddingLeft: '8px', // override the cell padding for data cells
-  //             paddingRight: '8px',
-  //             backgroundColor: "red",
-  //         },
-  //     },
-  // };
-
-  // const customStyles = {
-  //   	header: {
-  //   		style: {
-  //   			minHeight: '72px',
-  //   		},
-  //   	},
-  //   	headRow: {
-  //   		style: {
-  //   			borderTopStyle: 'solid',
-  //   			borderTopWidth: '1px',
-  //   			borderTopColor: defaultThemes.default.divider.default,
-  //   		},
-  //   	},
-  //   	headCells: {
-  //   		style: {
-  //   			'&:not(:last-of-type)': {
-  //   				borderRightStyle: 'solid',
-  //   				borderRightWidth: '1px',
-  //   				borderRightColor: defaultThemes.default.divider.default,
-  //   			},
-  //   		},
-  //   	},
-  //   	cells: {
-  //   		style: {
-  //   			'&:not(:last-of-type)': {
-  //   				borderRightStyle: 'solid',
-  //   				borderRightWidth: '1px',
-  //   				borderRightColor: defaultThemes.default.divider.default,
-  //   			},
-  //   		},
-  //   	},
-  //   };
 
   const customStyles = {
     rows: {
@@ -136,7 +81,6 @@ const DataTables = ({data, columns, title}) => {
               data={rows}
               pagination
               progressPending={pending}
-              // theme='dark'
               responsive
               customStyles={customStyles}
               paginationComponentOptions={PaginateOptions}

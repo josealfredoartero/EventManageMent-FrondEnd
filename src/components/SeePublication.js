@@ -11,12 +11,12 @@ const SeePublication = ({state, setState, id}) => {
     const getPublication = async() => {
         await axios.get(`${UrlApi}publication/${id}`)
         .then(response => {
-            console.log(response);
+            // console.log(response);
             setPublication(response.data);
             setImage(response.data.images[0].url)
         })
         .catch(error => {
-            console.log(error)
+            // console.log(error)
         })
     }
 

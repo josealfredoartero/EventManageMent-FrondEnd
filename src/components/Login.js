@@ -34,7 +34,7 @@ const login = async(e) => {
     })
     .catch(error => {
         e.target.disabled = false;
-        console.log(error);
+        // console.log(error);
         if(error.response.status === 422){
           setErrors(error.response.data.errors);
         }else if(error.response.status === 401){

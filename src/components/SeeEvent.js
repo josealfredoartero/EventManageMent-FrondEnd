@@ -10,12 +10,11 @@ const SeeEvent = ({state, setState, id=null}) => {
     const getEvent = async() => {
         await axios.get(`http://127.0.0.1:8000/api/events/${id}`)
         .then(response => {
-            console.log(response);
             setEvent(response.data)
             
         })
         .catch(error => {
-            console.log(error)
+            // console.log(error)
         })
     }
 

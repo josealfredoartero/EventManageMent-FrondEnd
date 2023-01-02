@@ -17,7 +17,6 @@ const Navbars = () => {
   
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" className="mb-1">
-      {/* <Link to='/' className="btn btn-dark bg-dark">EventManageMent</Link> */}
       <Link to='/'>
         <Logo src='/img/logo1.png' alt='logo'/>
       </Link>

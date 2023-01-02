@@ -18,7 +18,6 @@ const Event = () => {
     const getEvent = async() => {
         await axios.get(`http://127.0.0.1:8000/api/events/${id}`)
         .then(response => {
-            // console.log(response);
             setEvent(response.data)
         })
         .catch(error =>console.log(error))
@@ -27,7 +26,6 @@ const Event = () => {
     const getComments = async() => {
         await axios.get(`http://127.0.0.1:8000/api/event/comments/${id}`)
         .then(response => {
-            // console.log(response);
             setComments(response.data);
         })
         .catch(error =>console.log(error))
@@ -40,7 +38,6 @@ const Event = () => {
             id_event: id
         },header)
         .then(response =>{
-            // console.log(response);
             getComments();
             setComment('')
         })

@@ -79,7 +79,6 @@ const PublicationManage = () => {
     const deletePublication = async(id) => {
         await axios.delete(`http://127.0.0.1:8000/api/publication/${id}`,header)
         .then(response =>{
-            console.log(response);
             if(response.status === 200){
                 toast.success(response.data.message, {
                     position: toast.POSITION.TOP_RIGHT
@@ -88,7 +87,7 @@ const PublicationManage = () => {
             }
         })
         .catch(error => {
-            console.log(error);
+            // console.log(error);
         })
     }
 

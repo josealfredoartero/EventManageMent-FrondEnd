@@ -2,7 +2,7 @@ import axios from 'axios';
 import React,{useEffect, useState} from 'react';
 import { ContentCenter } from '../elements/style';
 import CarouselHome from './CarouselHome';
-import Publications from './Publications';
+// import Publications from './Publications';
 
 const Home = () => {
 

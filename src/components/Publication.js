@@ -19,7 +19,6 @@ const Publication = () => {
     const getPublication = async() => {
         await axios.get(`http://127.0.0.1:8000/api/publication/${id}`)
         .then(response => {
-            console.log(response);
             setPublication(response.data);
         })
         .catch(error => console.log(error))

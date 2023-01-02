@@ -48,7 +48,6 @@ const ModalCreatePublication = ({state, setState, refreshData}) => {
             images:images
         },header)
         .then(response => {
-            console.log(response)
             if(response.status === 200){
                 toast.success(response.data.message, {
                     position: toast.POSITION.TOP_RIGHT
@@ -58,7 +57,6 @@ const ModalCreatePublication = ({state, setState, refreshData}) => {
             }
         })
         .catch(error => {
-            console.log(error)
             if(error.response.status === 422){
                 setErrors(error.response.data.errors);
             }

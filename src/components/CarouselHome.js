@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 const CarouselHome = ({array, type}) => {
     const navigate = useNavigate();
-    // console.log(array)
+
   return (
     <Carousel variant="dark">
         {

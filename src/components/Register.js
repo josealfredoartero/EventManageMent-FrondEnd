@@ -27,13 +27,11 @@ const Register = ({autenticacion}) => {
             password_confirmation:confirpassword
         })
         .then(response => {
-            // console.log(response);
             e.target.disabled = false;
             navigate("/login");
         })
         .catch(error => {
             e.target.disabled = false;
-            // console.log(error.response.data);
             setErrors(error.response.data.errors)
         })
     }

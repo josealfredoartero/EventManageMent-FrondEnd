@@ -4,7 +4,7 @@ import Carousel from 'react-bootstrap/Carousel';
 import { BtnLink } from '../elements/style';
 
 const CardPublication = ({publication, button=true}) => {
-    // console.log(publication);
+
   return (
     <Card style={{ width: '40rem', margin:"20px 0px" }}>
       <Carousel>

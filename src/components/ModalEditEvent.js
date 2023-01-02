@@ -46,7 +46,6 @@ const ModalEditEvent = ({state, setState, id, refresh}) => {
             image:image[0]
         }, header)
         .then(response =>{
-            // console.log(response);
             if (response.status === 200) {
                 toast.success(response.data.message, {
                     position: toast.POSITION.TOP_RIGHT
@@ -55,11 +54,10 @@ const ModalEditEvent = ({state, setState, id, refresh}) => {
                 refresh()
             }
         })
-        .catch(err =>{
+        .catch(error =>{
             toast.error("Error !!!", {
                 position: toast.POSITION.TOP_RIGHT
               });
-            console.log(err);
         })
     } 
 

@@ -28,7 +28,6 @@ const EventManage = () => {
     const getEvents = async() => {
         await axios.get("http://127.0.0.1:8000/api/events")
         .then(response => {
-            console.log(response);
             setEvents(response.data);
         })
         .catch(error => console.log(error))

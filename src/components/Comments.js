@@ -17,14 +17,12 @@ const Comments = ({comment, refresh}) => {
         if(comment.id_publication){
             await axios.delete(`http://127.0.0.1:8000/api/publication/comment/${comment.id}`,header)
             .then(response => {
-                // console.log(response);
                 refresh()
             })
             .catch(error => console.log(error))
         }else if(comment.id_event){
             await axios.delete(`http://127.0.0.1:8000/api/event/comment/${comment.id}`,header)
             .then(response => {
-                // console.log(response);
                 refresh()
             })
             .catch(error => console.log(error))

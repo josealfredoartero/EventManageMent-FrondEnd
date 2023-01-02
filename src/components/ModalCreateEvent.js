@@ -28,7 +28,7 @@ const ModalCreateEvent = ({state, setState, refresh}) => {
             image:image[0]
         }, header)
         .then(response =>{
-            console.log(response);
+            // console.log(response);
             if (response.status === 200) {
                 toast.success(response.data.message, {
                     position: toast.POSITION.TOP_RIGHT
@@ -44,7 +44,7 @@ const ModalCreateEvent = ({state, setState, refresh}) => {
               if(error.response.status === 422){
                 setErrors(error.response.data.errors);
               }
-            console.log(error);
+            // console.log(error);
         })
     } 
 
